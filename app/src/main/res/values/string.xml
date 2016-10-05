@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SuperTourism3</string>
+    <string-array name="tourism_type_array">
+        <item>Adventure</item>
+        <item>Ecotourism</item>
+        <item>Historical</item>
+        <item>Industrial Tourism</item>
+        <item>Religious Tourism</item>
+
+    </string-array>
+</resources>

@@ -1,0 +1,20 @@
+<resources>
+    <style name="Base.AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item> <!-- toolbar -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item> <!-- notification/status bar -->
+        <item name="colorAccent">@color/colorAccent</item> <!-- Widgets when activated -->
+      <!--  <item name="textColorPrimary"></item>--> <!-- Title text -->
+        <!--  <item name="windowBackground"></item> --><!-- Background of app screen -->
+        <!--   <item name="textColorSecondary"></item> --><!-- Navigation arrow/overflow icon -->
+        <!--  <item name="colorControlHighlight"></item>--> <!-- Color of ripple animation -->
+        <!--  <item name="colorButtonNormal"></item>--> <!-- Button background color -->
+        <!--   <item name="colorControlActivated"></item>--> <!-- Widget when selected/activated-->
+        <!--  <item name="navigationBarColor"></item> --><!-- color of navigation bar -->
+
+    </style>
+
+    <style name="AppTheme" parent="Base.AppTheme">
+
+    </style>
+</resources>
