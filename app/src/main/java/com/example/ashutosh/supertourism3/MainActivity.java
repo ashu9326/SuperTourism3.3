@@ -9,9 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-import com.example.ashutosh.supertourism3.data.TopTourFragment;
+//import com.example.ashutosh.supertourism3.fragments.TopTourPlaceFragment;
+import com.example.ashutosh.supertourism3.fragments.TourTypeFragment;
+//import com.example.ashutosh.supertourism3.fragments.TourismTypeFragment;
 
-import layout.TourismTypeFragment;
+import com.example.ashutosh.supertourism3.fragments.TopPlaceFragment;
+
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -45,12 +48,12 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new TourismTypeFragment();
+                    return new TourTypeFragment();
                 case 1:
-                    return new TopTourFragment();
+                    return new TopPlaceFragment();
 
                 default:
-                    return new TourismTypeFragment();
+                    return new TourTypeFragment();
             }
         }
 

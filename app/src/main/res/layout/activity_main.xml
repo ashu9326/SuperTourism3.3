@@ -22,16 +22,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <fragment
-        android:id="@+id/tour_type_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:name="layout.TourismTypeFragment"
-        />
-    <fragment
-        android:id="@+id/top_ture_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:name="com.example.ashutosh.supertourism3.data.TopTourFragment"
-        />
+
 </LinearLayout>
