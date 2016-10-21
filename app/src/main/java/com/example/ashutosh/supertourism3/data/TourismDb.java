@@ -7,9 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 
 import com.example.ashutosh.supertourism3.model.Place;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 /**
@@ -74,33 +76,50 @@ public class TourismDb {
     }*/
     //endregion
 
-    public ArrayList<Place> getPlaceBasedOnTypeOfPlace(String typeOfPlace){
+    public ArrayList<Place> getPlaceBasedOnTypeOfPlace(String typeOfPlace) {
 
         database = openReadableDatabaseInstance();
 
         /*
         Which columns you want in your cursor
          */
-        String[] projections = {ContractTourism.TourismPlace.COLUMN_TOURISM_TYPE,ContractTourism.TourismPlace.COLUMN_TOURISM_NAME}; //null
+        String[] projections = {ContractTourism.TourismPlace.COLUMN_TOURISM_TYPE, ContractTourism.TourismPlace.COLUMN_TOURISM_NAME}; //null
 
-        String selection = ContractTourism.TourismPlace.COLUMN_TOURISM_TYPE +" = ? ";
+        String selection = ContractTourism.TourismPlace.COLUMN_TOURISM_TYPE + " = ? ";
         String[] selectionArgs = {typeOfPlace};
 
         Cursor cursor = database.query(ContractTourism.TourismPlace.TABLE_NAME, null, selection, selectionArgs,
                 null, null, null);
 
         ArrayList<Place> arrayList = new ArrayList<>();
-        if(cursor.moveToFirst()){
-            do{
+        if (cursor.moveToFirst()) {
+            do {
                 String type = cursor.getString(cursor.getColumnIndex(ContractTourism.TourismPlace.COLUMN_TOURISM_TYPE));
                 String name = cursor.getString(cursor.getColumnIndex(ContractTourism.TourismPlace.COLUMN_TOURISM_NAME));
                 String summary = cursor.getString(cursor.getColumnIndex(ContractTourism.TourismPlace.COLUMN_TOURISM_PLACE_SUMMARY));
                 //String image = cursor.getBlob(cursor.getColumnIndex(ContractTourism.TourismPlace.COLUMN_TOURISM_PLACE_IMAGE));
-                byte[] bytes=cursor.getBlob(cursor.getColumnIndex(ContractTourism.TourismPlace.COLUMN_TOURISM_PLACE_IMAGE));
+                //byte[] bytes = cursor.getBlob(cursor.getColumnIndex(ContractTourism.TourismPlace.COLUMN_TOURISM_PLACE_IMAGE));
 
-                Bitmap image = BitmapFactory.decodeByteArray(bytes, 0, 0);
+                //region code for image
+               /*   byte[] bytesImage = cursor.getBlob(cursor.getColumnIndex(ContractTourism.TourismPlace.COLUMN_TOURISM_PLACE_IMAGE));
+                int intByteCount = bytesImage.length;
+                int[] intColors = new int[intByteCount / 3];
+                int intWidth = 2;
+                int intHeight = 2;
+                final int intAlpha = 255;
+                if ((intByteCount / 3) != (intWidth * intHeight)) {
+                    throw new ArrayStoreException();
+                }
+                for (int intIndex = 0; intIndex < intByteCount - 2; intIndex = intIndex + 3) {
+                    intColors[intIndex / 3] = (intAlpha << 24) | (bytesImage[intIndex] << 16) | (bytesImage[intIndex + 1] << 8) | bytesImage[intIndex + 2];
+                }
 
-                Place place = new Place(type, name,summary,image);
+                Bitmap bmpImage = Bitmap.createBitmap(intColors, intWidth, intHeight, Bitmap.Config.ARGB_8888);*/
+
+
+                //Bitmap image = BitmapFactory.decodeByteArray(bytes, 0, 0);
+                //endregion
+                Place place = new Place(type, name, summary,null);
                 arrayList.add(place);
 
             } while (cursor.moveToNext());
@@ -111,24 +130,24 @@ public class TourismDb {
         return arrayList;
     }
 
-    public ArrayList<Place> getAllPlaces(){
+    public ArrayList<Place> getAllPlaces() {
 
         database = openReadableDatabaseInstance();
 
         Cursor cursor = database.query(ContractTourism.TourismPlace.TABLE_NAME, null, null, null, null, null, null);
 
         ArrayList<Place> arrayList = new ArrayList<>();
-        if(cursor.moveToFirst()){
-            do{
+        if (cursor.moveToFirst()) {
+            do {
                 String name = cursor.getString(cursor.getColumnIndex(ContractTourism.TourismPlace.COLUMN_TOURISM_NAME));
                 String type = cursor.getString(cursor.getColumnIndex(ContractTourism.TourismPlace.COLUMN_TOURISM_TYPE));
                 String summary = cursor.getString(cursor.getColumnIndex(ContractTourism.TourismPlace.COLUMN_TOURISM_PLACE_SUMMARY));
 
-                byte[] bytes=cursor.getBlob(cursor.getColumnIndex(ContractTourism.TourismPlace.COLUMN_TOURISM_PLACE_IMAGE));
+                byte[] bytes = cursor.getBlob(cursor.getColumnIndex(ContractTourism.TourismPlace.COLUMN_TOURISM_PLACE_IMAGE));
 
                 Bitmap image = BitmapFactory.decodeByteArray(bytes, 0, 0);
 
-                Place place = new Place(type, name,summary,image);
+                Place place = new Place(type, name, summary, image);
                 arrayList.add(place);
 
             } while (cursor.moveToNext());
@@ -140,7 +159,7 @@ public class TourismDb {
 
     }
 
-    public long insertPlace(String type, String name, String summary, byte[] imageLocation){
+    public long insertPlace(String type, String name, String summary, byte[] imageLocation) {
         database = openWritableDatabaseInstance();
 
         ContentValues cv = new ContentValues();

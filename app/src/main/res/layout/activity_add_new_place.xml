@@ -63,17 +63,31 @@
             android:layout_alignParentRight="true"
             android:layout_marginTop="15dp"
             android:hint="Place Name" />
-    </RelativeLayout>
+
+
+    <ImageButton
+        android:id="@+id/addImage"
+        android:layout_below="@id/editTextPlaceName"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:text="Add image"
+
+        android:src="@drawable/camera_icon" />
 
     <Button
-        android:id="@+id/addImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add image" />
+        android:layout_toRightOf="@id/addImage"
+        android:paddingLeft="5dp"
+        android:layout_below="@id/editTextPlaceName"
+        android:text="Add Gallery Image"
+        android:onClick="addGalleryImage"/>
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
         android:layout_height="120dp" />
 
 

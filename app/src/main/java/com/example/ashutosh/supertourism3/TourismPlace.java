@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,12 +28,12 @@ public class TourismPlace extends AppCompatActivity {
     MyAdapter myAdapter = new MyAdapter();
     ArrayList<Place> placeArrayList = new ArrayList<>();
     ArrayAdapter<String> arrayAdapterTourismPlace;
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     //private GoogleApiClient client;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,14 +103,13 @@ public class TourismPlace extends AppCompatActivity {
             Place p = placeArrayList.get(i);
 
             View v = getLayoutInflater().inflate(R.layout.place_row, viewGroup, false);
-            TextView placeType = (TextView) v.findViewById(R.id.place_type);
+            //TextView placeType = (TextView) v.findViewById(R.id.place_type);
             TextView placeName = (TextView) v.findViewById(R.id.place_name);
-           /* ImageView placeImage=(ImageView)v.findViewById(R.id.place_image);*/
+          // ashu ImageView placeImage = (ImageView) v.findViewById(R.id.tourism_place_img);
 
-            placeType.setText(p.getType());
+            //  placeType.setText(p.getType());
+          //ashu  placeImage.setImageBitmap(p.getImage());
             placeName.setText(p.getName());
-            // placeImage.setImageBitmap();
-
 
             return v;
         }

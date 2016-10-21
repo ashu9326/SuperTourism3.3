@@ -32,7 +32,7 @@ public class TopPlaceFragment extends Fragment {
 
     ListView listViewTopPlace;
     private ArrayList<TopPlace> topPlaceArrayList = new ArrayList<>();
-    private String[] topPlaceName = {"Bangalore Fort", "Hebbe Falls", "Lalbaag", "National Park", "Tipu Sultan Palace",};
+    private String[] topPlaceName = {"Hampi Village", "Hebbe Falls", "Lalbaag", "National Park", "Tipu Sultan Palace",};
     //private int[] topPlaceImage = {R.drawable.bangalore_fort, R.drawable.hebbe_falls, R.drawable.lalbag,R.drawable.national_park,R.drawable.tipu_palace};
     private MyAdapter myAdapter;
 
@@ -140,7 +140,7 @@ public class TopPlaceFragment extends Fragment {
     }
 
     private void populateTopPlaceList() {
-        topPlaceArrayList.add(new TopPlace("Bangalore Fort", R.drawable.bangalore_fort));
+        topPlaceArrayList.add(new TopPlace("Hampi Village", R.drawable.hampi));
         topPlaceArrayList.add(new TopPlace("Hebbe Falls", R.drawable.hebbe_falls));
         topPlaceArrayList.add(new TopPlace("Lalbaag", R.drawable.lalbag));
         topPlaceArrayList.add(new TopPlace("National Park", R.drawable.national_park));

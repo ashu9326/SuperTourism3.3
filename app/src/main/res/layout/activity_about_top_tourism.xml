@@ -1,39 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingRight="5dp"
+    android:paddingLeft="5dp"
+    android:paddingBottom="5dp"
     tools:context="com.example.ashutosh.supertourism3.AboutTopTourism"
     android:orientation="vertical">
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/tool_bar" />
-<!--
+
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
+        android:layout_below="@id/toolbar"
         android:layout_height="match_parent"
         android:layout_width="match_parent">
     </android.support.v4.view.ViewPager>
-    -->
 
     <ImageView
         android:id="@+id/top_place_image_view"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="150dp"
+
         android:layout_below="@id/toolbar"/>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_place_image_view"
+        android:layout_marginTop="50dp">
 
     <TextView
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/top_place_image_view"
-        android:layout_marginTop="5dp"
+
+
         android:text="hello"/>
     </ScrollView>
 
-</LinearLayout>
+</RelativeLayout>
