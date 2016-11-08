@@ -3,8 +3,11 @@ package com.example.ashutosh.supertourism3;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -28,7 +31,7 @@ public class TourismPlace extends AppCompatActivity {
     MyAdapter myAdapter = new MyAdapter();
     ArrayList<Place> placeArrayList = new ArrayList<>();
     ArrayAdapter<String> arrayAdapterTourismPlace;
-
+    FloatingActionButton floatingActionButton;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -38,8 +41,12 @@ public class TourismPlace extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tourism_place);
-        db = new TourismDb(this);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
+
+        db = new TourismDb(this);
+        floatingActionButton= (FloatingActionButton)findViewById(R.id.fab);
         placeList = (ListView) findViewById(R.id.place_list);
 
         //region Description
@@ -61,14 +68,22 @@ public class TourismPlace extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundel = intent.getExtras();
         String type = bundel.getString("i");
-
+        getSupportActionBar().setTitle(type+" Place...");
         placeArrayList.addAll(db.getPlaceBasedOnTypeOfPlace(type));
 
         placeList.setAdapter(myAdapter);/*
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();*/
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TourismPlace.this,AddNewPlace.class);
+                startActivity(intent);
+            }
+        });
     }
+
 
     @Override
     public void onStart() {
@@ -105,10 +120,10 @@ public class TourismPlace extends AppCompatActivity {
             View v = getLayoutInflater().inflate(R.layout.place_row, viewGroup, false);
             //TextView placeType = (TextView) v.findViewById(R.id.place_type);
             TextView placeName = (TextView) v.findViewById(R.id.place_name);
-          // ashu ImageView placeImage = (ImageView) v.findViewById(R.id.tourism_place_img);
+            // ashu ImageView placeImage = (ImageView) v.findViewById(R.id.tourism_place_img);
 
             //  placeType.setText(p.getType());
-          //ashu  placeImage.setImageBitmap(p.getImage());
+            //ashu  placeImage.setImageBitmap(p.getImage());
             placeName.setText(p.getName());
 
             return v;

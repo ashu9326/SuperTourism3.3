@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingRight="5dp"
-    android:paddingLeft="5dp"
-    android:paddingBottom="5dp"
+
     tools:context="com.example.ashutosh.supertourism3.AboutTopTourism"
     android:orientation="vertical">
 
@@ -24,7 +22,7 @@
         android:id="@+id/top_place_image_view"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-
+        android:layout_marginBottom="15dp"
         android:layout_below="@id/toolbar"/>
 
     <ScrollView

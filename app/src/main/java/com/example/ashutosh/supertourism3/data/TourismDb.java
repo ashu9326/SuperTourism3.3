@@ -147,7 +147,7 @@ public class TourismDb {
 
                 Bitmap image = BitmapFactory.decodeByteArray(bytes, 0, 0);
 
-                Place place = new Place(type, name, summary, image);
+                Place place = new Place(type, name, summary, null);
                 arrayList.add(place);
 
             } while (cursor.moveToNext());
@@ -159,7 +159,7 @@ public class TourismDb {
 
     }
 
-    public long insertPlace(String type, String name, String summary, byte[] imageLocation) {
+    public long insertPlace(String type, String name, String summary, String imageLocation) {
         database = openWritableDatabaseInstance();
 
         ContentValues cv = new ContentValues();
@@ -178,13 +178,13 @@ public class TourismDb {
 
     public class TourismDbHelper extends SQLiteOpenHelper {
         private static final String DATABASE_NAME = "tourism.db";
-        private static final int DATABASE_VERSION = 2;
+        private static final int DATABASE_VERSION = 3;
 
         private String SQL_CREATE_TOURISM_TABLE = "CREATE TABLE " + ContractTourism.TourismPlace.TABLE_NAME + "("
                 + ContractTourism.TourismPlace._ID + " INTEGER PRIMARY KEY,"
                 + ContractTourism.TourismPlace.COLUMN_TOURISM_TYPE + " TEXT NOT NULL,"
                 + ContractTourism.TourismPlace.COLUMN_TOURISM_NAME + " TEXT DEFAULT NULL,"
-                + ContractTourism.TourismPlace.COLUMN_TOURISM_PLACE_IMAGE + " BLOB DEFAULT NULL,"
+                + ContractTourism.TourismPlace.COLUMN_TOURISM_PLACE_IMAGE + " TEXT DEFAULT NULL,"
                 + ContractTourism.TourismPlace.COLUMN_TOURISM_PLACE_SUMMARY + " TEXT DEFAULT NULL);";
 
         private String SQL_DROP_TOURISM_TABLE = "DROP TABLE " + ContractTourism.TourismPlace.TABLE_NAME + ";";

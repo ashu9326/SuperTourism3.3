@@ -1,5 +1,6 @@
 package com.example.ashutosh.supertourism3;
 
+import android.os.Build;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,12 +18,26 @@ import com.example.ashutosh.supertourism3.fragments.TopPlaceFragment;
 
 
 public class MainActivity extends AppCompatActivity {
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         initializeScreen();
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setTitle("Super Tourism");
+       // toolbar.setSubtitle("Subtitle here");
+
+       // toolbar.setLogo(android.R.drawable.btn_star_big_on); // Logo Image
+       // toolbar.setNavigationIcon(android.R.drawable.ic_media_previous); // Navigation icon image
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            toolbar.setElevation(10f);
+        }
 
     }
 

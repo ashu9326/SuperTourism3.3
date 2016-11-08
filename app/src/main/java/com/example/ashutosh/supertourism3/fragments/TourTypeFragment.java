@@ -28,7 +28,7 @@ public class TourTypeFragment extends Fragment {
     public TourTypeFragment() {
         // Required empty public constructor
     }
-    FloatingActionButton floatingActionButton;
+
     private ListView  listViewTourType;
     String[] tourType = new String[]{"Adventure", "Ecotourism", "Historical", "Industrial Tourism", "Religious Tourism"};
     ArrayAdapter<String> arrayAdapterTourType;
@@ -40,7 +40,6 @@ public class TourTypeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_tour_type, container, false);
-        floatingActionButton= (FloatingActionButton) v.findViewById(R.id.fab);
         listViewTourType=(ListView)v.findViewById(R.id.list_view_tour_type);
         /*arrayListTourType.add(tourType[0]);
         arrayListTourType.add(tourType[1]);
@@ -59,13 +58,7 @@ public class TourTypeFragment extends Fragment {
             }
         });
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),AddNewPlace.class);
-                startActivity(intent);
-            }
-        });
+
         return v;
     }
 

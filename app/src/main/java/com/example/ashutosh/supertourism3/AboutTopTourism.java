@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.example.ashutosh.supertourism3.model.CustomAdapter;
@@ -16,17 +17,20 @@ public class AboutTopTourism extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("About Top Places");
         setContentView(R.layout.activity_about_top_tourism);
         textView = (TextView) findViewById(R.id.text);
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
 
-
-
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         String indexNum = bundle.getString("topPlaceName");
         textView.setText("" + indexNum);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(indexNum);
 
         switch (indexNum) {
             case ("Hampi Village"): {

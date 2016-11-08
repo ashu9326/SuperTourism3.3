@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f7ab07"
+    android:background="#ffffff"
     android:orientation="vertical"
     tools:context="com.example.ashutosh.supertourism3.AddNewPlace">
 
@@ -71,7 +71,7 @@
         android:layout_width="60dp"
         android:layout_height="45dp"
         android:text="Add image"
-
+        android:scaleType="centerCrop"
         android:src="@drawable/camera_icon" />
 
     <Button
@@ -96,7 +96,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLength="40"
-        android:maxLines="400" />
+        android:maxLines="400"
+        android:hint="Something Write About Place "/>
 
     <Button
         android:id="@+id/addButton"
